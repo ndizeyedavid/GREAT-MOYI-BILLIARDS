@@ -4,41 +4,40 @@
 
 @font-face {
   font-family: bodyFont;
-  src: url(/assets/fonts/Raleway.ttf);
+  src: url(/assets/fonts/inter.ttf);
 }
 
+body,
 html {
-  scroll-behavior: smooth;
+  font-family: bodyFont, "sans-serif";
+  @apply bg-[#05020d] text-white;
 }
 
-body {
-  font-family: bodyFont;
-  @apply font-medium bg-primary-97 overflow-x-hidden;
+#gradient {
+  background: linear-gradient(to right, #f83a3a, #7000ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.active:not(#logo) {
-  color: #ffbe99 !important;
-  @apply bg-primary-80;
-}
-.active div {
-  @apply font-semibold;
-}
-
-.footer-link {
-  /* display: none; */
-  position: relative;
-}
-
-.footer-link::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 0%;
-  border-radius: 20px;
-  transition: 0.3s ease-in-out;
-  @apply h-[2.2px] bg-primary-70;
-}
-
-.footer-link:hover::before {
+#bg-gradient {
   width: 100%;
+  height: calc(100% + 10px);
+  background: linear-gradient(
+    to right,
+    #05020d 0%,
+    #f83a3a 30%,
+    #7000ff 70%,
+    #05020d 100%
+  );
+  border-radius: 10px;
+  opacity: 0.15;
+  z-index: 0;
+  filter: blur(10px);
+
+  /* Add soft edges at the top */
+  box-shadow: 0 -20px 30px rgba(0, 0, 0, 0.5); /* Soft edge effect */
+}
+
+#ad-cont {
+  background: linear-gradient(105deg, #d35cae 0%, #5e1180 30%, #131649 80%);
 }
