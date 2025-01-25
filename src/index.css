@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: bodyFont;
+  src: url(/assets/fonts/Raleway.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: bodyFont;
+  @apply font-medium bg-primary-97 overflow-x-hidden;
+}
+
+.active:not(#logo) {
+  color: #ffbe99 !important;
+  @apply bg-primary-80;
+}
+.active div {
+  @apply font-semibold;
+}
+
+.footer-link {
+  /* display: none; */
+  position: relative;
+}
+
+.footer-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0%;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+  @apply h-[2.2px] bg-primary-70;
+}
+
+.footer-link:hover::before {
+  width: 100%;
+}

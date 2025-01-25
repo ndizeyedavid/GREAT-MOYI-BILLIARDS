@@ -1,0 +1,15 @@
+# Robots.txt file for https://essanyarugunga1.netlify.app
+
+# Allowed
+User-agent: *
+Allow: /
+
+# Blocked
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /settings/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://essanyarugunga1.netlify.app/sitemap.xml
