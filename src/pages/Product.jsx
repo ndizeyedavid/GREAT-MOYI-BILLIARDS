@@ -1,28 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import axios from "axios";
+
+import { Link, useParams } from "react-router-dom";
 
 export default function Product() {
-    const [mainImage, setMainImage] = useState(0);
+    const { id } = useParams();
+
+    const [mainImage, setMainImage] = useState(id);
     const [showSpec, setShowSpec] = useState(false);
 
-    const images = [
-        "/assets/pool1.jpg",
-        "/assets/pool2.webp",
-        "/assets/pool1.jpg",
-        "/assets/pool1.jpg"
-    ];
+    const [data, setData] = useState([]);
+    const [images, setImages] = useState([]);
+    const [specs, setSpecs] = useState([]);
+    const [features, setFeatures] = useState([]);
+    useEffect(() => {
+        axios.get("/data/products.json").then((response) => {
+            const data = response.data[id];
+            setData(data);
+            setImages(data.preview_images);
+            setSpecs(data.specs);
+            setFeatures(data.features)
+        })
+    }, [])
 
-    const specs = [
-        { label: "Dimensions", value: "8ft x 4ft (Standard)" },
-        { label: "Playing Surface", value: "Italian Slate" },
-        { label: "Frame", value: "Solid Mahogany" },
-        { label: "Cushions", value: "K-66 Profile Rubber" },
-        { label: "Cloth", value: "Championship Worsted" },
-        { label: "Legs", value: "Carved Solid Wood" },
-        { label: "Pockets", value: "Professional Grade Leather" },
-        { label: "Weight", value: "850 lbs" }
-    ];
+    function formatMessage(title, price) {
+        const message = `Greatings! I am thrilled to inform you about your interest in purchasing the "${title}" priced at "${price}". `
+        return message.replaceAll(" ", "%20");
+    }
 
     return (
         <div className="min-h-screen bg-gray-900">
@@ -61,43 +67,31 @@ export default function Product() {
                     {/* Product Info */}
                     <div className="space-y-6">
                         <div className="space-y-2">
-                            <h1 className="text-3xl font-bold text-white">Professional Tournament Pool Table</h1>
-                            <p className="text-xl text-blue-400">$6,999.99</p>
+                            <h1 className="text-3xl font-bold text-white">{data.title}</h1>
+                            <p className="text-xl text-blue-400">{data.price}</p>
                         </div>
 
                         <div className="space-y-4 text-gray-300">
                             <p className="leading-relaxed">
-                                Experience professional-grade gaming with our tournament-standard pool table.
-                                Crafted with premium materials and meticulous attention to detail, this table
-                                offers exceptional playability and stunning aesthetics.
+                                {data.description}
                             </p>
 
                             <div className="space-y-2">
-                                <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <span>Professional Tournament Grade</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <span>Genuine Italian Slate</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <span>Premium Leather Pockets</span>
-                                </div>
+                                {features.map((value, index) => (
+                                    <div key={index} className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        <span>{value}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
                         <div className="flex gap-4">
-                            <button className="px-8 py-3 font-semibold text-white transition-all duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105">
+                            <Link to={`https://api.whatsapp.com/send?phone=250796140857&text=${formatMessage(data.title, data.price)}`} className="px-8 py-3 font-semibold text-white transition-all duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105">
                                 Order Now
-                            </button>
+                            </Link>
                             <button
                                 onClick={() => setShowSpec(!showSpec)}
                                 className="px-8 py-3 font-semibold text-white transition-all duration-300 transform border border-gray-600 rounded-lg hover:border-blue-500 hover:bg-gray-800"

@@ -1,0 +1,29 @@
+[
+  {
+    "thumbnail": "/assets/pool1.jpg",
+    "title": "Mellow pool table",
+    "price": "120,000 RWF",
+    "description": "show may mine summer final slow town sister truck different local declared pile degree minute audience worried tongue food storm skill fear eat aware",
+    "features": [
+      "Genuine Italian Slate",
+      "Professional Tournament Grade",
+      "Premium Leather Pockets"
+    ],
+    "specs": [
+      { "label": "Dimensions", "value": "8ft x 4ft (Standard)" },
+      { "label": "Playing Surface", "value": "Italian Slate" },
+      { "label": "Frame", "value": "Solid Mahogany" },
+      { "label": "Cushions", "value": "K-66 Profile Rubber" },
+      { "label": "Weight", "value": "850 lbs" },
+      { "label": "Cloth", "value": "Championship Worsted" },
+      { "label": "Legs", "value": "Carved Solid Wood" },
+      { "label": "Pockets", "value": "Professional Grade Leather" }
+    ],
+    "preview_images": [
+      "/assets/pool1.jpg",
+      "/assets/pool1.jpg",
+      "/assets/pool2.webp",
+      "/assets/pool1.jpg"
+    ]
+  }
+]

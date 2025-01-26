@@ -4,12 +4,24 @@ import Navbar from "../components/Navbar";
 import SingleCard from "../components/SingleCard"
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Explore() {
+
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axios.get('/data/products.json').then((response) => {
+            const data = response.data;
+            // console.log(data)
+            setData(data);
+        })
+    }, [])
+
     return (
         <>
             <Navbar />
-            <div className="w-[90%] mx-auto mt-[500px] flex flex-col gap-[96px] h-screen items-center justify-center">
+            <div className="w-[90%] mx-auto mt-[100px] flex flex-col gap-[96px] items-center justify-center">
 
                 <div className="flex flex-col items-center justify-center text-center w-[60%] gap-3">
 
@@ -21,16 +33,13 @@ export default function Explore() {
                 {/* Pool tables */}
                 <div className="grid grid-cols-3 gap-5">
 
-                    <SingleCard img="/assets/pool1.jpg" title="4 X 4 pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                    <SingleCard img="/assets/pool2.webp" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                    <SingleCard img="/assets/pool3.png" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                    <SingleCard img="/assets/pool4.jpeg" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                    <SingleCard img="/assets/pool1.jpg" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                    <SingleCard img="/assets/pool2.webp" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
+                    {data.map((value, index) => (
+                        <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />
+                    ))}
 
                 </div>
             </div>
-            <Footer />
+            <div className="mt-[100px]"><Footer variant="custom" /></div>
         </>
     )
 }

@@ -18,3 +18,10 @@
 # V 0.7.2
 
 - Fixed font issues
+
+# V 0.7.3
+
+- added local data storages for easy web updating
+- Order now, sends you to whatsapp to complete the negotiation
+- dynamic Content fetching
+- Data folder created 💾

@@ -4,7 +4,6 @@ Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09
 
 # release version v 0.7 (stable)
 
-> Latest: Added a pool game
-> Latest: SEO certified
+> Latest: Static data storage
 
-# completion level: 53%
+# completion level: 73%

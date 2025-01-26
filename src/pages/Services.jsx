@@ -2,8 +2,19 @@ import { Palette, Wrench, Zap } from "lucide-react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Services() {
+
+    const [stats, setStats] = useState([]);
+    useEffect(() => {
+        axios.get("/data/analytics.json").then((response) => {
+            const data = response.data;
+            setStats(data)
+        })
+    })
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
             <Navbar />
@@ -75,7 +86,7 @@ export default function Services() {
                             whileHover={{ scale: 1.1 }}
                             className="p-6 text-center bg-gray-800/50 rounded-xl"
                         >
-                            <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{stat.number}+</h3>
+                            <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{stat.number}</h3>
                             <p className="text-gray-300">{stat.label}</p>
                         </motion.div>
                     ))}
@@ -118,11 +129,4 @@ const services = [
         description: "Comprehensive maintenance services to keep your table in pristine condition.",
         icon: <Zap />
     }
-];
-
-const stats = [
-    { number: "100", label: "Tables Sold" },
-    { number: "50", label: "Custom Designs" },
-    { number: "200", label: "Happy Clients" },
-    { number: "5", label: "Years Experience" }
 ];
