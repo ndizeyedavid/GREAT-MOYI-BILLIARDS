@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://essanyarugunga1.netlify.app/</loc>
+    <loc>https://thegreatmoyibilliards.netlify.app/</loc>
     <lastmod>2025-01-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- About Page -->
+  <!-- Catalog Page -->
   <url>
-    <loc>https://essanyarugunga1.netlify.app/about</loc>
+    <loc>https://thegreatmoyibilliards.netlify.app/explore</loc>
+    <lastmod>2025-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About Us Page -->
+  <url>
+    <loc>https://thegreatmoyibilliards.netlify.app/play</loc>
     <lastmod>2025-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Academic Programs Page -->
+  <!-- Pricing Page -->
   <url>
-    <loc>https://essanyarugunga1.netlify.app/programs</loc>
-    <lastmod>2025-01-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Admission Page -->
-  <url>
-    <loc>https://essanyarugunga1.netlify.app/admissions</loc>
+    <loc>https://thegreatmoyibilliards.netlify.app/about</loc>
     <lastmod>2025-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -34,9 +34,9 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://essanyarugunga1.netlify.app/contact</loc>
+    <loc>https://thegreatmoyibilliards.netlify.app/contact</loc>
     <lastmod>2025-01-05</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

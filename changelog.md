@@ -10,3 +10,7 @@
 - Added an online pool game 🎮
 - all pages designed and synced
 - Responsiveness partially made⚠️
+
+# v0.7.1
+
+- Configured Meta information for perfect SEO
