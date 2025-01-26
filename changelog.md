@@ -11,6 +11,10 @@
 - all pages designed and synced
 - Responsiveness partially made⚠️
 
-# v0.7.1
+# V 0.7.1
 
 - Configured Meta information for perfect SEO
+
+# V 0.7.2
+
+- Fixed font issues

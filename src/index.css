@@ -9,7 +9,7 @@
 
 body,
 html {
-  font-family: bodyFont, "sans-serif";
+  font-family: bodyFont, sans-serif;
   @apply bg-[#05020d] text-white;
 }
 

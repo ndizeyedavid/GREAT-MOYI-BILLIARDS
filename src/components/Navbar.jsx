@@ -13,7 +13,7 @@ export default function Navbar() {
     return (
         <div className="flex items-center justify-between p-4 w-[90%] mx-auto mb-5">
             {/* logo */}
-            <div className="w-[70px] h-[70px] cursor-pointer">
+            <div className="w-[80px] h-[70px] cursor-pointer">
                 <img src="/assets/logo/transparent/logo.png" className="object-cover w-full h-full transition-all opacity-70 hover:opacity-85" alt="Logo" width={500} height={500} />
             </div>
 

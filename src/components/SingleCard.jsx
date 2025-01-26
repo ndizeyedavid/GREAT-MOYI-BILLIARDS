@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function SingleCard({ img, title, desc }) {
     return (
@@ -12,7 +13,7 @@ export default function SingleCard({ img, title, desc }) {
             </div>
 
             <div className="px-3 py-3">
-                <a href="/explore/2" className="px-[15px] py-2 mb-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">More details</a>
+                <Link to="/explore/2" className="px-[15px] py-2 mb-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">More details</Link>
             </div>
 
         </div>
