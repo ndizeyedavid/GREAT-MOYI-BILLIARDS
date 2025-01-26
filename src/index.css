@@ -30,7 +30,7 @@ html {
     #05020d 100%
   );
   border-radius: 10px;
-  opacity: 0.15;
+  opacity: 0.16;
   z-index: 0;
   filter: blur(100px);
 
@@ -49,4 +49,11 @@ html {
 
 .active {
   @apply font-bold text-white;
+}
+
+.thumbnail {
+  background-image: url("/assets/play.webp");
+  background-position: center;
+  background-size: 850px;
+  background-repeat: no-repeat;
 }

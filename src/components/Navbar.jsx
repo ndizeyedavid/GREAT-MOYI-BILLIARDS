@@ -1,8 +1,15 @@
 // import { Link } from "react-router-dom";
 
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import LanguageDropdown from "../context/LanguageDropdown";
 
 export default function Navbar() {
+
+    // useEffect(() => {
+    //     Translator();
+    // }, [])
+
     return (
         <div className="flex items-center justify-between p-4 w-[90%] mx-auto mb-5">
             {/* logo */}
@@ -20,7 +27,11 @@ export default function Navbar() {
             </nav>
 
             {/* action buttons */}
-            <div className="flex gap-5">
+            <div className="flex items-center gap-5">
+                {/* translate option here */}
+                <div className="h-[40px] overflow-hidden rounded-md">
+                    <LanguageDropdown />
+                </div>
                 <button className="px-[15px] py-2 bg-white/5 rounded-md transition-all hover:bg-white/25">Order Now</button>
             </div>
         </div>

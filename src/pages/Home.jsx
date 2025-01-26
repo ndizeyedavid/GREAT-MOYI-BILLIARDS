@@ -20,8 +20,8 @@ export default function Home() {
 
                     {/* illustrations */}
                     <div className="relative top-4">
-                        <img src="/assets/illustrations/hero.svg" className="absolute bottom-[-140px] left-0 right-0 w-[900px] opacity-60 h-[350px]" width={500} height={500} alt="Illustration" />
-                        <img src="/assets/pool3.png" className="w-[600px] h-[300px] object-cover rounded opacity-50 blur-[2px]" width={500} height={500} alt="Illustration" />
+                        <img src="/assets/illustrations/hero.svg" className="absolute bottom-[-140px] left-0 right-0 w-[900px] opacity-80 h-[350px]" width={500} height={500} alt="Illustration" />
+                        <img src="/assets/pool3.png" className="w-[600px] h-[300px] object-cover rounded opacity-80 blur-[2px]" width={500} height={500} alt="Illustration" />
                     </div>
 
                     {/* hero description */}
