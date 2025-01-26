@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "konva": "^9.3.18",
     "lucide-react": "^0.474.0",
+    "matter-js": "^0.20.0",
     "motion": "^11.15.0",
     "pure-react-carousel": "^1.32.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-konva": "^18.2.10",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {

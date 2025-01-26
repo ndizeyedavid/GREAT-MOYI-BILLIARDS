@@ -32,7 +32,7 @@ html {
   border-radius: 10px;
   opacity: 0.15;
   z-index: 0;
-  filter: blur(10px);
+  filter: blur(100px);
 
   /* Add soft edges at the top */
   box-shadow: 0 -20px 30px rgba(0, 0, 0, 0.5); /* Soft edge effect */
@@ -44,5 +44,9 @@ html {
 
 .fun-stuff {
   text-shadow: 0 0 20px #833339;
-  @apply p-1 rounded bg-white/10 text-[#ffe2e2];
+  @apply p-[2px] rounded bg-white/10 text-[#ffe2e2];
+}
+
+.active {
+  @apply font-bold text-white;
 }
