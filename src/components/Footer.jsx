@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function Footer({ variant }) {
     return (
@@ -10,15 +11,10 @@ export default function Footer({ variant }) {
                     <img src="/assets/logo/transparent/logo.png" className="w-[95px] object-cover h-[85px]" width={100} height={100} alt="Footer image" />
                     <div className="flex flex-col gap-4">
                         <h3 className="font-medium text-[25px]">Services</h3>
-                        <ul className="flex flex-col gap-2 text-white/50">
-                            <li><a href="" className="transition-all hover:text-white/80">Store</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Developer</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Teams</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pro</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Browser</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">API Docs</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pricing</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Chanqeloq</a></li>
+                        <ul className="flex flex-col gap-4 text-white/50">
+                            <li><Link to="/about#details" className="transition-all hover:text-white/80">About Us</Link></li>
+                            <li><Link to="/about#legacy" className="transition-all hover:text-white/80">Our Legacy</Link></li>
+                            <li><Link to="/about#premium" className="transition-all hover:text-white/80">Premium Services</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -27,15 +23,11 @@ export default function Footer({ variant }) {
                     <img src="/assets/logo/transparent/thumb.png" className="w-[85px] object-cover h-[85px]" width={100} height={100} alt="Footer image" />
                     <div className="flex flex-col gap-4">
                         <h3 className="font-medium text-[25px]">Billiards</h3>
-                        <ul className="flex flex-col gap-2 text-white/50">
-                            <li><a href="" className="transition-all hover:text-white/80">Store</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Developer</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Teams</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pro</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Browser</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">API Docs</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pricing</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Chanqeloq</a></li>
+                        <ul className="flex flex-col gap-3 text-white/50">
+                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Store</Link></li>
+                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Custom Pool Tables</Link></li>
+                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Suggest a design</Link></li>
+                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Inquiries</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -44,15 +36,12 @@ export default function Footer({ variant }) {
                     <img src="/assets/logo/transparent/star.png" className="w-[85px] object-cover h-[85px]" width={100} height={100} alt="Footer image" />
                     <div className="flex flex-col gap-4">
                         <h3 className="font-medium text-[25px]">Contact</h3>
-                        <ul className="flex flex-col gap-2 text-white/50">
-                            <li><a href="" className="transition-all hover:text-white/80">Store</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Developer</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Teams</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pro</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Browser</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">API Docs</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Pricing</a></li>
-                            <li><a href="" className="transition-all hover:text-white/80">Chanqeloq</a></li>
+                        <ul className="flex flex-col gap-3 text-white/50">
+                            <li><Link to="/contact" className="transition-all hover:text-white/80">Map</Link></li>
+                            <li><Link to="/contact" className="transition-all hover:text-white/80">Write a Message</Link></li>
+                            <li><Link to="/contact" className="transition-all hover:text-white/80">Contact Details</Link></li>
+                            <li><Link to="/contact" className="transition-all hover:text-white/80">Confirm Order</Link></li>
+                            <li><Link to="/contact" className="transition-all hover:text-white/80">Social Media</Link></li>
                         </ul>
                     </div>
                 </div>

@@ -1,18 +1,16 @@
 // import { Link } from "react-router-dom";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import LanguageDropdown from "../context/LanguageDropdown";
 
 export default function Navbar() {
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     Translator();
-    // }, [])
 
     return (
         <div className="flex items-center justify-between p-4 w-[90%] mx-auto mb-5">
             {/* logo */}
-            <div className="w-[80px] h-[70px] cursor-pointer">
+            <div onClick={() => navigate("/")} className="w-[80px] h-[70px] cursor-pointer">
                 <img src="/assets/logo/transparent/logo.png" className="object-cover w-full h-full transition-all opacity-70 hover:opacity-85" alt="Logo" width={500} height={500} />
             </div>
 
