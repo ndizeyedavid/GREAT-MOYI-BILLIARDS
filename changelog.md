@@ -25,3 +25,11 @@
 - Order now, sends you to whatsapp to complete the negotiation
 - dynamic Content fetching
 - Data folder created 💾
+
+# V 0.8
+
+- Updated contact page
+- Added lazy loading to all requests and page change
+- Footer is more meaningful
+- All link buttons successfully configured
+- Lighthouse results: 66% - Performance | 95% Accessbility | 96% Best practices | 92% SEO

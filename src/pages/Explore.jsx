@@ -1,22 +1,25 @@
-import { MoveRight } from "lucide-react";
-import Container from "../components/Container";
+
 import Navbar from "../components/Navbar";
 import SingleCard from "../components/SingleCard"
-import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SimpleLoading from "../components/SimpleLoading";
+import scrollToTop from "../context/scrollToTop";
 
 export default function Explore() {
 
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         axios.get('/data/products.json').then((response) => {
+            setLoading(false);
             const data = response.data;
-            // console.log(data)
             setData(data);
         })
     }, [])
+
+    scrollToTop();
 
     return (
         <>
@@ -31,6 +34,11 @@ export default function Explore() {
                 </div>
 
                 {/* Pool tables */}
+
+                {/* lazy loading */}
+
+                {loading ? <SimpleLoading /> : null}
+
                 <div className="grid grid-cols-3 gap-5">
 
                     {data.map((value, index) => (

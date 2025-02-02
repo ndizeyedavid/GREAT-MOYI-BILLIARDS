@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import scrollToTop from "../context/scrollToTop";
 
 export default function Services() {
 
@@ -14,6 +15,8 @@ export default function Services() {
             setStats(data)
         })
     })
+
+    scrollToTop();
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">

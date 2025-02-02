@@ -5,8 +5,22 @@ import Navbar from "../components/Navbar"
 import SingleCard from "../components/SingleCard"
 import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import SimpleLoading from "../components/SimpleLoading"
 
 export default function Home() {
+
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get('/data/products.json').then((response) => {
+            setLoading(false);
+            const data = response.data;
+            setData(data);
+        })
+    }, [])
     return (
         <>
             {/* MAin body section container */}
@@ -30,7 +44,7 @@ export default function Home() {
 
                         <p className="text-white/40">Great Moyi is a blazingly fast, totally extendable launcher. It lets you complete tasks, calculate, share common links, and much more.</p>
 
-                        <button className="px-[15px] py-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">Order now anywhere</button>
+                        <Link to="/explore" className="px-[15px] py-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">Order now anywhere</Link>
                     </div>
 
                 </div>
@@ -79,14 +93,16 @@ export default function Home() {
                     </div>
 
                     {/* Pool tables */}
+
+                    {/* lazy loading */}
+                    {loading ? <SimpleLoading /> : null}
+
+
                     <div className="grid grid-cols-3 gap-5">
 
-                        <SingleCard img="/assets/pool1.jpg" title="4 X 4 pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                        <SingleCard img="/assets/pool2.webp" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                        <SingleCard img="/assets/pool3.png" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                        <SingleCard img="/assets/pool4.jpeg" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                        <SingleCard img="/assets/pool1.jpg" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
-                        <SingleCard img="/assets/pool2.webp" title="Arc Wooden  pool table" desc="let shown nor cap fallen creature passage ate power level system student pig motor grade beauty tail position storm cabin peace milk problem stiff" />
+                        {data.map((value, index) => (
+                            <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />
+                        ))}
 
                     </div>
 
