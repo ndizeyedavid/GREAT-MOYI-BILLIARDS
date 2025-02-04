@@ -5,7 +5,7 @@ export default function Footer({ variant }) {
         <footer className={`mt-${variant == "custom" ? "[200px]" : "[600px]"}`}>
             <hr className="border border-white/5" />
 
-            <div className="w-[90%] mx-auto p-5 flex justify-between gap-5">
+            <div className="w-[90%] mx-auto p-5 flex flex-col md:flex-row justify-between gap-10">
 
                 <div className="flex items-start gap-8">
                     <img src="/assets/logo/transparent/logo.png" className="w-[95px] object-cover h-[85px]" width={100} height={100} alt="Footer image" />
@@ -24,10 +24,10 @@ export default function Footer({ variant }) {
                     <div className="flex flex-col gap-4">
                         <h3 className="font-medium text-[25px]">Billiards</h3>
                         <ul className="flex flex-col gap-3 text-white/50">
-                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Store</Link></li>
-                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Custom Pool Tables</Link></li>
-                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Suggest a design</Link></li>
-                            <li><Link to="/expore#products" className="transition-all hover:text-white/80">Inquiries</Link></li>
+                            <li><Link to="/explore#products" className="transition-all hover:text-white/80">Store</Link></li>
+                            <li><Link to="/explore#products" className="transition-all hover:text-white/80">Custom Pool Tables</Link></li>
+                            <li><Link to="/explore#products" className="transition-all hover:text-white/80">Suggest a design</Link></li>
+                            <li><Link to="/explore#products" className="transition-all hover:text-white/80">Inquiries</Link></li>
                         </ul>
                     </div>
                 </div>

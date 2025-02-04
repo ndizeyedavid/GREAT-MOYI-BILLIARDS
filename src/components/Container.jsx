@@ -1,7 +1,7 @@
 
 function Container({ children }) {
     return (
-        <section className="grid grid-rows-2 w-[90%] mx-auto">
+        <section className="w-[90%] mx-auto">
             {children}
         </section>
     )

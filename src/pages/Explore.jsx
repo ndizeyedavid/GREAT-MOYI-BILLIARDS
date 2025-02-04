@@ -26,9 +26,9 @@ export default function Explore() {
             <Navbar />
             <div className="w-[90%] mx-auto mt-[100px] flex flex-col gap-[96px] items-center justify-center">
 
-                <div className="flex flex-col items-center justify-center text-center w-[60%] gap-3">
+                <div className="flex flex-col items-center justify-center text-center md:w-[60%] gap-3">
 
-                    <h3 className="text-white text-[52px] font-semibold leading-[71px]">Put the <span className="fun-stuff">Fun</span><br />into <span className="fun-stuff">Fun</span>tastic!</h3>
+                    <h3 className="text-white text-[42px] md:text-[52px] font-semibold leading-[71px]">Put the <span className="fun-stuff">Fun</span><br />into <span className="fun-stuff">Fun</span>tastic!</h3>
                     <p className="text-white/55">Say hello to the Store. A home for Extensions published by our community of Developers using our API. Find extensions to the tools you use in your day-to-day</p>
 
                 </div>
@@ -39,7 +39,7 @@ export default function Explore() {
 
                 {loading ? <SimpleLoading /> : null}
 
-                <div className="grid grid-cols-3 gap-5">
+                <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
                     {data.map((value, index) => (
                         <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />

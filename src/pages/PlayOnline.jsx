@@ -6,7 +6,7 @@ export default function PlayOnline() {
         <>
             <NavBar />
 
-            <div className="w-[60%] mx-auto mt-[70px] mb-[90px]">
+            <div className="md:w-[60%] w-[90%] mx-auto mt-[70px] mb-[90px]">
                 <div className="">
                     <h3 className="text-[50px] font-medium">Play</h3>
                     <p className="text-xl font-normal text-white/80">Level up your skills with our online playground</p>

@@ -27,9 +27,9 @@ export default function Services() {
                 <div className="absolute inset-0 bg-black/50">
                     <div className="flex items-center justify-center h-full">
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-6xl font-bold text-center text-white"
+                            className="w-[95%] mx-auto font-bold text-center text-white leading-[50px] text-[36px] md:text-6xl"
                         >
                             Crafting Premium Pool Experiences
                         </motion.h1>
@@ -97,8 +97,8 @@ export default function Services() {
 
                 {/* Contact Section */}
                 <div className="p-12 text-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl">
-                    <h4 className="text-[#FFD700] text-[36px] font-bold mb-6">Let's Create Something Special</h4>
-                    <p className="mb-8 text-xl text-gray-300">
+                    <h4 className="text-[#FFD700] text-[27px]  md:text-[36px] font-bold mb-6">Let's Create Something Special</h4>
+                    <p className="mb-8 text-[15px] md:text-xl text-gray-300">
                         Ready to elevate your game room? We're here to help bring your vision to life.
                     </p>
                     <motion.a

@@ -1,12 +1,22 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import scrollToTop from "../context/scrollToTop";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import axios from "axios";
 
 export default function Contact() {
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get("/data/contact.json").then(response => {
+            const data = response.data;
+            setData(data);
+        })
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,21 +53,21 @@ export default function Contact() {
                                     <FaPhone className="text-xl text-blue-500" />
                                     <div>
                                         <p className="font-medium">Phone</p>
-                                        <p>+1 (234) 567-8900</p>
+                                        <p>{data.phone}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4 text-gray-300">
                                     <FaEnvelope className="text-xl text-blue-500" />
                                     <div>
                                         <p className="font-medium">Email</p>
-                                        <p>info@moyibilliards.com</p>
+                                        <p>{data.email}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4 text-gray-300">
                                     <FaMapMarkerAlt className="text-xl text-blue-500" />
                                     <div>
                                         <p className="font-medium">Address</p>
-                                        <p>123 Billiards Street, Game City, ST 12345</p>
+                                        <p>{data.address}</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,16 +77,16 @@ export default function Contact() {
                         <div className="p-6 rounded-lg bg-gray-800/70 backdrop-blur-xl">
                             <h2 className="mb-6 text-2xl font-bold text-white">Follow Us</h2>
                             <div className="flex space-x-6">
-                                <a href="#" className="text-blue-500 transition-colors hover:text-blue-400">
+                                <a href={data.facebook} className="text-blue-500 transition-colors hover:text-blue-400">
                                     <FaFacebook size={24} />
                                 </a>
-                                <a href="#" className="text-blue-500 transition-colors hover:text-blue-400">
+                                <a href={data.twitter} className="text-blue-500 transition-colors hover:text-blue-400">
                                     <FaTwitter size={24} />
                                 </a>
-                                <a href="#" className="text-blue-500 transition-colors hover:text-blue-400">
+                                <a href={data.instagram} className="text-blue-500 transition-colors hover:text-blue-400">
                                     <FaInstagram size={24} />
                                 </a>
-                                <a href="#" className="text-blue-500 transition-colors hover:text-blue-400">
+                                <a href={data.linkedin} className="text-blue-500 transition-colors hover:text-blue-400">
                                     <FaLinkedin size={24} />
                                 </a>
                             </div>

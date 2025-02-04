@@ -6,6 +6,6 @@ Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09
 
 # release version v 0.7 (stable)
 
-> Latest: Contact page, Footer, Lazy loading
+> Latest: Repsonsiveness
 
 # completion level: 73%

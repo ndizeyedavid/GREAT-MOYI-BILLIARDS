@@ -33,3 +33,7 @@
 - Footer is more meaningful
 - All link buttons successfully configured
 - Lighthouse results: 66% - Performance | 95% Accessbility | 96% Best practices | 92% SEO
+
+# V 1.1
+
+- Repsonsiveness configured
