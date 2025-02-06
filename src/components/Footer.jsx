@@ -50,7 +50,7 @@ export default function Footer({ variant }) {
             </div>
             <hr className="border border-white/5" />
 
-            <p className="flex items-center justify-center gap-2 p-5 text-center text-white/70">A Mesh with <img src="/assets/footer.svg" className="bg-white" height={20} width={20} alt="01" /> by <a href="http://ndizeyedavid.github.io" className="underline text-white/50 hover:text-white/80 hover:underline" target="_blank">David</a></p>
+            <p className=" p-5 text-center text-white/70">Copyright &copy; 2025 . A product of The Great Moyi Billiards &mdash; <span className="text-center pt-5 text-gray-200">All rights reserved</span> </p>
 
         </footer>
     )

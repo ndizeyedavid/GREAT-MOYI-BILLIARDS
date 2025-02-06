@@ -37,3 +37,7 @@
 # V 1.1
 
 - Repsonsiveness configured
+
+# V 1.0.2
+
+- (Minor change) Added progress custom progress bar loading

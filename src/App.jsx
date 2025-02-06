@@ -9,12 +9,15 @@ const Contact = lazy(() => import("./pages/Contact"))
 const Product = lazy(() => import("./pages/Product"))
 
 import FullLoading from "./components/FullLoading"
+import ProgressBar from "./components/ProgressBar"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        {/* Cool page loading */}
+        <ProgressBar />
         <Suspense fallback={<FullLoading />}>
           <Routes>
             <Route path="/" element={<Home />} />
