@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import scrollToTop from "../context/scrollToTop";
+import CTA from "../components/CTA";
 
 export default function Services() {
 
@@ -95,21 +96,31 @@ export default function Services() {
                     ))}
                 </div>
 
-                {/* Contact Section */}
-                <div className="p-12 text-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl">
-                    <h4 className="text-[#FFD700] text-[27px]  md:text-[36px] font-bold mb-6">Let's Create Something Special</h4>
-                    <p className="mb-8 text-[15px] md:text-xl text-gray-300">
-                        Ready to elevate your game room? We're here to help bring your vision to life.
-                    </p>
-                    <motion.a
-                        href="/contact"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-[#FFD700] text-gray-900 text-lg font-bold py-4 px-8 rounded-full hover:bg-yellow-400 transition duration-300"
-                    >
-                        Contact Us Now
-                    </motion.a>
+                {/* Team Section */}
+                <div className="mb-20">
+                    <h4 className="text-[#FFD700] text-[48px] font-bold text-center mb-16">Meet Our Team</h4>
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                        {team.map((member, index) => (
+                            <motion.div
+                                key={index}
+                                whileHover={{ y: -10 }}
+                                className="p-6 text-center border border-gray-700 shadow-2xl bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl"
+                            >
+                                <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    className="w-32 h-32 mx-auto mb-4 rounded-full object-cover border-2 border-[#FFD700]"
+                                />
+                                <h5 className="mb-2 text-2xl font-bold text-white">{member.name}</h5>
+                                <p className="text-[#FFD700] mb-3">{member.position}</p>
+                                <p className="text-gray-300">{member.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
+
+                {/* CTA */}
+                <CTA />
             </div>
             <Footer variant="custom" />
         </div>
@@ -131,5 +142,26 @@ const services = [
         title: "Maintenance",
         description: "Comprehensive maintenance services to keep your table in pristine condition.",
         icon: <Zap />
+    }
+];
+
+const team = [
+    {
+        name: "John Smith",
+        position: "Master Craftsman",
+        description: "With over 15 years of experience in billiards table craftsmanship.",
+        image: "/team/john.jpg"
+    },
+    {
+        name: "Sarah Johnson",
+        position: "Design Specialist",
+        description: "Creating unique table designs that blend form and function.",
+        image: "/team/sarah.jpg"
+    },
+    {
+        name: "Mike Chen",
+        position: "Installation Expert",
+        description: "Ensuring perfect setup and playability for every table.",
+        image: "/team/mike.jpg"
     }
 ];

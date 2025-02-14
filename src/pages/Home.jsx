@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import SimpleLoading from "../components/SimpleLoading"
+import CTA from "../components/CTA"
 
 export default function Home() {
 
@@ -109,7 +110,12 @@ export default function Home() {
                     <Link to="/explore" className="flex items-center gap-2 hover:gap-4 px-[15px] py-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">See More <MoveRight /></Link>
 
                 </div>
+
+                <div className="mt-[60px]">
+                    <CTA />
+                </div>
             </Container>
+
 
             <div className="mt-[100px]">
                 <Footer variant="custom" />
