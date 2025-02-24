@@ -1,4 +1,7 @@
 import { Crown, MoveRight, Verified } from "lucide-react"
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Alert from "../components/Alert"
 import Container from "../components/Container"
 import Navbar from "../components/Navbar"
@@ -9,11 +12,22 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import SimpleLoading from "../components/SimpleLoading"
 import CTA from "../components/CTA"
+import SideAdvertisment from "../components/SideAdvertisment";
 
 export default function Home() {
 
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+
+    const carouselSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000
+    };
 
     useEffect(() => {
         axios.get('/data/products.json').then((response) => {
@@ -24,7 +38,8 @@ export default function Home() {
     }, [])
     return (
         <>
-            {/* MAin body section container */}
+            <SideAdvertisment />
+
             <Navbar />
             <Container>
 
@@ -33,10 +48,22 @@ export default function Home() {
                     {/* gradient blobs */}
                     <div className="absolute -top-[10px]" id="bg-gradient"></div>
 
-                    {/* illustrations */}
-                    <div className="relative top-4">
-                        <img src="/assets/illustrations/hero.svg" className="hidden md:block absolute bottom-[-140px] left-0 right-0 w-[900px] opacity-80 h-[350px]" width={500} height={500} alt="Illustration" />
-                        <img src="/assets/pool3.png" className="md:w-[600px] md:h-[300px] object-cover rounded opacity-80 blur-[2px]" width={500} height={500} alt="Illustration" />
+                    {/* illustrations carousel */}
+                    <div className="relative top-4 w-full max-w-[900px]">
+                        <img src="/assets/illustrations/hero.svg" className="hidden md:block absolute bottom-[-140px] left-0 right-0 w-[900px] h-[350px] animate-float" width={500} height={500} alt="Illustration" />
+
+                        <Slider {...carouselSettings}>
+                            <div>
+                                <img src="/assets/pool2.webp" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                            </div>
+                            <div>
+                                <img src="/assets/pool3.png" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                            </div>
+                            <div>
+                                <img src="/assets/pool1.jpg" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                            </div>
+                            {/* Add more slides as needed */}
+                        </Slider>
                     </div>
 
                     {/* hero description */}
@@ -54,6 +81,13 @@ export default function Home() {
                 {/* Alert */}
                 <div className="flex items-center justify-center mt-[105px] md:mt-[205px]">
                     <Alert />
+                </div>
+
+                {/* Top Advertisement Section */}
+                <div className="flex justify-center w-full my-8">
+                    <div className="w-full max-w-[728px] h-[90px] bg-gray-800/50 rounded-md flex items-center justify-center">
+                        <span className="text-gray-500">Advertisement Space</span>
+                    </div>
                 </div>
 
                 {/* Ad Section */}
@@ -98,6 +132,12 @@ export default function Home() {
                     {/* lazy loading */}
                     {loading ? <SimpleLoading /> : null}
 
+                    {/* Mid-Page Advertisement */}
+                    <div className="flex justify-center w-full my-8">
+                        <div className="w-full max-w-[970px] h-[250px] bg-gray-800/50 rounded-md flex items-center justify-center">
+                            <span className="text-gray-500">Advertisement Space (970x250)</span>
+                        </div>
+                    </div>
 
                     <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
@@ -105,6 +145,13 @@ export default function Home() {
                             <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />
                         ))}
 
+                    </div>
+
+                    {/* Bottom Advertisement */}
+                    <div className="flex justify-center w-full my-8">
+                        <div className="w-full max-w-[728px] h-[90px] bg-gray-800/50 rounded-md flex items-center justify-center">
+                            <span className="text-gray-500">Advertisement Space</span>
+                        </div>
                     </div>
 
                     <Link to="/explore" className="flex items-center gap-2 hover:gap-4 px-[15px] py-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">See More <MoveRight /></Link>
