@@ -13,11 +13,13 @@ import axios from "axios"
 import SimpleLoading from "../components/SimpleLoading"
 import CTA from "../components/CTA"
 import SideAdvertisment from "../components/SideAdvertisment";
+import pb from "../utils/pocketbase";
 
 export default function Home() {
 
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [ads, setAds] = useState([]);
 
     const carouselSettings = {
         dots: true,
@@ -30,15 +32,19 @@ export default function Home() {
     };
 
     useEffect(() => {
-        axios.get('/data/products.json').then((response) => {
-            setLoading(false);
-            const data = response.data;
-            setData(data);
-        })
+        async function fetch_data() {
+            const tables = await pb.collection("tables").getList(1, 3);
+            const ads_results = await pb.collection("ads").getFullList();
+
+            setData(tables.items);
+            setAds(ads_results[0]);
+        }
+
+        fetch_data()
     }, [])
     return (
         <>
-            <SideAdvertisment />
+            <SideAdvertisment ads={ads} />
 
             <Navbar />
             <Container>
@@ -84,11 +90,13 @@ export default function Home() {
                 </div>
 
                 {/* Top Advertisement Section */}
-                <div className="flex justify-center w-full my-8">
-                    <div className="w-full max-w-[728px] h-[90px] bg-gray-800/50 rounded-md flex items-center justify-center">
-                        <span className="text-gray-500">Advertisement Space</span>
+                {ads.horizontal1 != "" &&
+                    <div className="flex justify-center w-full my-8">
+                        <div className="w-full max-w-[728px] h-[90px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
+                            <img src={pb.files.getURL(ads, ads.horizontal1)} className="object-cover w-full h-full" alt="Ads" />
+                        </div>
                     </div>
-                </div>
+                }
 
                 {/* Ad Section */}
                 <div className="flex flex-col gap-[96px] items-center justify-center mt-[105px] md:mt-[205px]">
@@ -133,26 +141,30 @@ export default function Home() {
                     {loading ? <SimpleLoading /> : null}
 
                     {/* Mid-Page Advertisement */}
-                    <div className="flex justify-center w-full my-8">
-                        <div className="w-full max-w-[970px] h-[250px] bg-gray-800/50 rounded-md flex items-center justify-center">
-                            <span className="text-gray-500">Advertisement Space (970x250)</span>
+                    {ads.horizontal2 != "" &&
+                        <div className="flex justify-center w-full my-8">
+                            <div className="w-full max-w-[970px] h-[250px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
+                                <img src={pb.files.getURL(ads, ads.horizontal2)} className="object-cover w-full h-full" alt="Ads" />
+                            </div>
                         </div>
-                    </div>
+                    }
 
                     <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
                         {data.map((value, index) => (
-                            <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />
+                            <SingleCard key={index} id={value.id} img={pb.files.getURL(value, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
                         ))}
 
                     </div>
 
                     {/* Bottom Advertisement */}
-                    <div className="flex justify-center w-full my-8">
-                        <div className="w-full max-w-[728px] h-[90px] bg-gray-800/50 rounded-md flex items-center justify-center">
-                            <span className="text-gray-500">Advertisement Space</span>
+                    {ads.horizontal3 != "" &&
+                        <div className="flex justify-center w-full my-8">
+                            <div className="w-full max-w-[728px] h-[90px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
+                                <img src={pb.files.getURL(ads, ads.horizontal3)} className="object-cover w-full h-full" alt="Ads" />
+                            </div>
                         </div>
-                    </div>
+                    }
 
                     <Link to="/explore" className="flex items-center gap-2 hover:gap-4 px-[15px] py-2 bg-white text-[#0d0d0d] font-medium rounded-md transition-all hover:bg-white/80">See More <MoveRight /></Link>
 
