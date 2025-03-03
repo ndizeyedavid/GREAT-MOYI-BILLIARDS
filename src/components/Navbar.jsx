@@ -34,7 +34,7 @@ export default function Navbar() {
                 </div>
                 <Link to="/explore" className="hidden md:block px-[15px] py-2 bg-white/5 rounded-md transition-all hover:bg-white/25">Order Now</Link>
 
-                <buttton onClick={() => setOpen(!open)} className="md:hidden px-[15px] py-2 bg-white/5 rounded-md transition-all hover:bg-white/25"><Menu /></buttton>
+                <button onClick={() => setOpen(!open)} className="md:hidden px-[15px] py-2 bg-white/5 rounded-md transition-all hover:bg-white/25"><Menu /></button>
             </div>
 
             {open ?

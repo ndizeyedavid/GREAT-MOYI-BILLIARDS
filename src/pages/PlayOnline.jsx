@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
+import pb from "../utils/pocketbase";
+import SideAdvertisment from "../components/SideAdvertisment";
 
 export default function PlayOnline() {
+
+    const [ads, setAds] = useState([]);
+
+    useEffect(() => {
+        async function fetch_ads() {
+            const results = await pb.collection("ads").getFullList();
+
+            setAds(results[0]);
+        }
+
+        fetch_ads();
+    }, []);
+
     return (
         <>
+            <SideAdvertisment ads={ads} />
             <NavBar />
 
             <div className="md:w-[60%] w-[90%] mx-auto mt-[70px] mb-[90px]">

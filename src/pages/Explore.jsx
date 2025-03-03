@@ -6,25 +6,33 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SimpleLoading from "../components/SimpleLoading";
 import scrollToTop from "../context/scrollToTop";
+import pb from "../utils/pocketbase";
+import SideAdvertisment from "../components/SideAdvertisment";
 
 export default function Explore() {
 
     const [data, setData] = useState([]);
+    const [ads, setAds] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.get('/data/products.json').then((response) => {
+        async function fetch_data() {
+            setLoading(true);
+            const results = await pb.collection("tables").getFullList();
+            const ads_results = await pb.collection("ads").getFullList();
+            setData(results);
+            setAds(ads_results[0]);
             setLoading(false);
-            const data = response.data;
-            setData(data);
-        })
+        }
+        fetch_data();
     }, [])
 
     scrollToTop();
 
     return (
         <>
+            <SideAdvertisment ads={ads} />
             <Navbar />
-            <div className="w-[90%] mx-auto mt-[100px] flex flex-col gap-[96px] items-center justify-center">
+            <div className="w-[75%] mx-auto mt-[100px] flex flex-col gap-[96px] items-center justify-center">
 
                 <div className="flex flex-col items-center justify-center text-center md:w-[60%] gap-3">
 
@@ -42,7 +50,7 @@ export default function Explore() {
                 <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
                     {data.map((value, index) => (
-                        <SingleCard key={index} img={value.thumbnail} title={value.title} desc={value.description} price={value.price} id={index} />
+                        <SingleCard key={index} id={value.id} img={pb.files.getURL(value, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
                     ))}
 
                 </div>

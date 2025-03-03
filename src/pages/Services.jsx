@@ -6,16 +6,27 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import scrollToTop from "../context/scrollToTop";
 import CTA from "../components/CTA";
+import pb from "../utils/pocketbase";
+import SimpleLoading from "../components/SimpleLoading";
 
 export default function Services() {
 
-    const [stats, setStats] = useState([]);
+    const [teams, setTeams] = useState([]);
+    const [inform, setInform] = useState([]);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        axios.get("/data/analytics.json").then((response) => {
-            const data = response.data;
-            setStats(data)
-        })
-    })
+        async function fetch_data() {
+            setLoading(true);
+            const result = await pb.collection("team").getFullList();
+            const information = await pb.collection("site").getOne(import.meta.env.VITE_SITE_UPDATE_ID)
+
+            setTeams(result);
+            setInform(information);
+            setLoading(false);
+        }
+
+        fetch_data();
+    }, [])
 
     scrollToTop();
 
@@ -47,7 +58,8 @@ export default function Services() {
                     >
                         <h4 className="text-[#FFD700] text-[36px] font-bold mb-6">Great Moyi</h4>
                         <p className="text-gray-300 text-[18px] leading-relaxed">
-                            Welcome to Great Moyi Billiards, your premium destination for exceptional pool tables. We blend artistry with precision to create tables that become the centerpiece of your space.
+                            {loading && <SimpleLoading />}
+                            {inform.about}
                         </p>
                     </motion.div>
 
@@ -57,7 +69,8 @@ export default function Services() {
                     >
                         <h4 className="text-[#FFD700] text-[36px] font-bold mb-6">Our Legacy</h4>
                         <p className="text-gray-300 text-[18px] leading-relaxed">
-                            Since 2021, we've revolutionized the billiards industry through innovation and craftsmanship. Each table tells a story of precision, passion, and perfection.
+                            {loading && <SimpleLoading />}
+                            {inform.legacy}
                         </p>
                     </motion.div>
                 </div>
@@ -84,38 +97,67 @@ export default function Services() {
 
                 {/* Stats Section */}
                 <div className="grid grid-cols-2 gap-8 mb-20 md:grid-cols-4">
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            whileHover={{ scale: 1.1 }}
-                            className="p-6 text-center bg-gray-800/50 rounded-xl"
-                        >
-                            <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{stat.number}</h3>
-                            <p className="text-gray-300">{stat.label}</p>
-                        </motion.div>
-                    ))}
+
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="p-6 text-center bg-gray-800/50 rounded-xl">
+
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.tables_sold}</h3>
+                        <p className="text-gray-300">Tables Sold</p>
+
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="p-6 text-center bg-gray-800/50 rounded-xl">
+
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.happy_clients}</h3>
+                        <p className="text-gray-300">Happy Clients</p>
+
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="p-6 text-center bg-gray-800/50 rounded-xl">
+
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.districts}</h3>
+                        <p className="text-gray-300">Operating Districts</p>
+
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="p-6 text-center bg-gray-800/50 rounded-xl">
+
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.experience}</h3>
+                        <p className="text-gray-300">Years Experience</p>
+
+                    </motion.div>
                 </div>
 
                 {/* Team Section */}
                 <div className="mb-20">
                     <h4 className="text-[#FFD700] text-[48px] font-bold text-center mb-16">Meet Our Team</h4>
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                        {team.map((member, index) => (
-                            <motion.div
-                                key={index}
-                                whileHover={{ y: -10 }}
-                                className="p-6 text-center border border-gray-700 shadow-2xl bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl"
-                            >
-                                <img
-                                    src={member.image}
-                                    alt={member.name}
-                                    className="w-32 h-32 mx-auto mb-4 rounded-full object-cover border-2 border-[#FFD700]"
-                                />
-                                <h5 className="mb-2 text-2xl font-bold text-white">{member.name}</h5>
-                                <p className="text-[#FFD700] mb-3">{member.position}</p>
-                                <p className="text-gray-300">{member.description}</p>
-                            </motion.div>
-                        ))}
+                        {loading ?
+                            <SimpleLoading />
+
+                            :
+
+                            teams.map((member, index) => (
+                                <motion.div
+                                    key={index}
+                                    whileHover={{ y: -10 }}
+                                    className="p-6 text-center border border-gray-700 shadow-2xl bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl"
+                                >
+                                    <img
+                                        src={pb.files.getURL(member, member.avatar)}
+                                        alt={member.name}
+                                        className="w-32 h-32 mx-auto mb-4 rounded-full object-cover border-2 border-[#FFD700] aspect-square"
+                                    />
+                                    <h5 className="mb-2 text-2xl font-bold text-white">{member.name}</h5>
+                                    <p className="text-[#FFD700] mb-3">{member.role}</p>
+                                    <p className="text-gray-300">{member.description}</p>
+                                </motion.div>
+                            ))
+                        }
                     </div>
                 </div>
 

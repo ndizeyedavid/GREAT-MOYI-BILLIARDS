@@ -6,11 +6,12 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import SimpleLoading from "../components/SimpleLoading";
 import scrollToTop from "../context/scrollToTop";
+import pb from "../utils/pocketbase";
 
 export default function Product() {
     const { id } = useParams();
 
-    const [mainImage, setMainImage] = useState(id);
+    const [mainImage, setMainImage] = useState(0);
     const [showSpec, setShowSpec] = useState(false);
 
     const [data, setData] = useState([]);
@@ -19,18 +20,20 @@ export default function Product() {
     const [features, setFeatures] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.get("/data/products.json").then((response) => {
-            const data = response.data[id];
+        async function fetch_data() {
+            const data = await pb.collection("tables").getOne(id);
             setData(data);
             setImages(data.preview_images);
             setSpecs(data.specs);
             setFeatures(data.features)
             setLoading(false);
-        })
+        }
+
+        fetch_data()
     }, [])
 
     function formatMessage(title, price) {
-        const message = `Greatings! I am thrilled to inform you about your interest in purchasing the "${title}" priced at "${price}". `
+        const message = `Greatings! I am thrilled to inform you about your interest in purchasing the "${title}" priced at "${price.toLocaleString()} RWF". `
         return message.replaceAll(" ", "%20");
     }
 
@@ -51,7 +54,7 @@ export default function Product() {
                         <div className="space-y-4">
                             <div className="overflow-hidden rounded-lg bg-gray-800/50 aspect-[4/3]">
                                 <img
-                                    src={images[mainImage]}
+                                    src={pb.files.getURL(data, images[mainImage])}
                                     alt="Pool Table"
                                     className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
                                 />
@@ -65,7 +68,7 @@ export default function Product() {
                                               ${mainImage === idx ? 'ring-2 ring-blue-500' : ''}`}
                                     >
                                         <img
-                                            src={img}
+                                            src={pb.files.getURL(data, img)}
                                             alt={`View ${idx + 1}`}
                                             className="object-cover w-full h-full transition-all duration-300 hover:scale-110"
                                         />
@@ -78,7 +81,7 @@ export default function Product() {
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <h1 className="text-3xl font-bold text-white">{data.title}</h1>
-                                <p className="text-xl text-blue-400">{data.price}</p>
+                                <p className="text-xl text-blue-400">{data.price.toLocaleString()} RWF</p>
                             </div>
 
                             <div className="space-y-4 text-gray-300">
@@ -99,7 +102,7 @@ export default function Product() {
                             </div>
 
                             <div className="flex gap-4">
-                                <Link to={`https://api.whatsapp.com/send?phone=250796140857&text=${formatMessage(data.title, data.price)}`} className="px-8 py-3 font-semibold text-white transition-all duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105">
+                                <Link to={`https://api.whatsapp.com/send?phone=250796140857&text=${formatMessage(data.name, data.price)}`} className="px-8 py-3 font-semibold text-white transition-all duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105">
                                     Order Now
                                 </Link>
                                 <button

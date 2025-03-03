@@ -4,12 +4,12 @@ export default function SingleCard({ img, title, desc, price, id }) {
     return (
         <div className="border border-white/5 bg-[#191919]/30 rounded-md overflow-hidden flex flex-col gap-[10px]">
             <div className="w-full h-[400px] overflow-hidden">
-                <img src={img} className="object-cover w-full h-full transition-all hover:scale-105" width={500} height={500} alt="Pool table" />
+                <img src={img} className="object-cover w-full h-full transition-all hover:scale-105 aspect-square" width={500} height={500} alt="Pool table" />
             </div>
 
             <div className="flex flex-col gap-[10px] p-4">
                 <h3 className="text-xl font-medium text-white">{title}</h3>
-                <span className="text-xl text-blue-400">{price}</span>
+                <span className="text-xl text-blue-400">{price.toLocaleString()} RWF</span>
                 <p className="text-white/40 text-[15px]">{desc}</p>
             </div>
 
