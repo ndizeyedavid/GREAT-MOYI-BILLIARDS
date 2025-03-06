@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 import pb from "../utils/pocketbase";
 import SideAdvertisment from "../components/SideAdvertisment";
+import DatabaseService from "../services/databaseServices";
 
 export default function PlayOnline() {
 
@@ -10,7 +11,7 @@ export default function PlayOnline() {
 
     useEffect(() => {
         async function fetch_ads() {
-            const results = await pb.collection("ads").getFullList();
+            const results = await DatabaseService.listDocuments(import.meta.env.VITE_ADS_COLLECTION);
 
             setAds(results[0]);
         }

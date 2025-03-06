@@ -8,6 +8,8 @@ import scrollToTop from "../context/scrollToTop";
 import CTA from "../components/CTA";
 import pb from "../utils/pocketbase";
 import SimpleLoading from "../components/SimpleLoading";
+import DatabaseService from "../services/databaseServices";
+import { storage } from "../utils/appwrite";
 
 export default function Services() {
 
@@ -17,8 +19,8 @@ export default function Services() {
     useEffect(() => {
         async function fetch_data() {
             setLoading(true);
-            const result = await pb.collection("team").getFullList();
-            const information = await pb.collection("site").getOne(import.meta.env.VITE_SITE_UPDATE_ID)
+            const result = await DatabaseService.listDocuments(import.meta.env.VITE_TEAM_COLLECTION);
+            const information = await DatabaseService.getDocument(import.meta.env.VITE_ADS_COLLECTION, import.meta.env.VITE_SITE_DOCUMENT);
 
             setTeams(result);
             setInform(information);
@@ -148,7 +150,7 @@ export default function Services() {
                                     className="p-6 text-center border border-gray-700 shadow-2xl bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl"
                                 >
                                     <img
-                                        src={pb.files.getURL(member, member.avatar)}
+                                        src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, member.avatar)}
                                         alt={member.name}
                                         className="w-32 h-32 mx-auto mb-4 rounded-full object-cover border-2 border-[#FFD700] aspect-square"
                                     />

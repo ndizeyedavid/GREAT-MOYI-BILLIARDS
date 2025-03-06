@@ -7,6 +7,7 @@ import axios from "axios";
 import pb from "../utils/pocketbase";
 import { useForm } from "react-hook-form";
 import SimpleLoading from "../components/SimpleLoading";
+import DatabaseService from "../services/databaseServices";
 
 export default function Contact() {
     const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +21,7 @@ export default function Contact() {
     useEffect(() => {
         async function fetch_data() {
             setLoading(true);
-            const result = await pb.collection("site").getFullList();
+            const result = await DatabaseService.listDocuments(import.meta.env.VITE_SITE_COLLECTION);
             setData(result[0]);
             setLoading(false);
         }
@@ -32,16 +33,15 @@ export default function Contact() {
     async function sendMessage(data) {
         setIsLoading(true)
         try {
-            await pb.collection("messages").create({
+            await DatabaseService.createDocument(import.meta.env.VITE_SERVICES_COLLECTION, {
                 names: data.names,
                 email: data.email,
                 phone: data.phone,
                 message: data.message,
-                status: "unread"
             });
             setIsSuccess(true);
         } catch (err) {
-
+            alert("Message Not sent\nAn Error Occured.")
         } finally {
             setIsLoading(false);
             reset();

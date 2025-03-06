@@ -8,6 +8,8 @@ import SimpleLoading from "../components/SimpleLoading";
 import scrollToTop from "../context/scrollToTop";
 import pb from "../utils/pocketbase";
 import SideAdvertisment from "../components/SideAdvertisment";
+import DatabaseService from "../services/databaseServices";
+import { storage } from "../utils/appwrite";
 
 export default function Explore() {
 
@@ -17,8 +19,8 @@ export default function Explore() {
     useEffect(() => {
         async function fetch_data() {
             setLoading(true);
-            const results = await pb.collection("tables").getFullList();
-            const ads_results = await pb.collection("ads").getFullList();
+            const results = await DatabaseService.listDocuments(import.meta.env.VITE_TABLES_COLLECTION);
+            const ads_results = await DatabaseService.listDocuments(import.meta.env.VITE_ADS_COLLECTION);
             setData(results);
             setAds(ads_results[0]);
             setLoading(false);
@@ -50,7 +52,7 @@ export default function Explore() {
                 <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
                     {data.map((value, index) => (
-                        <SingleCard key={index} id={value.id} img={pb.files.getURL(value, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
+                        <SingleCard key={index} id={value.$id} img={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
                     ))}
 
                 </div>

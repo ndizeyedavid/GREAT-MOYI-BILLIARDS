@@ -7,6 +7,8 @@ import { Link, useParams } from "react-router-dom";
 import SimpleLoading from "../components/SimpleLoading";
 import scrollToTop from "../context/scrollToTop";
 import pb from "../utils/pocketbase";
+import DatabaseService from "../services/databaseServices";
+import { storage } from "../utils/appwrite";
 
 export default function Product() {
     const { id } = useParams();
@@ -21,11 +23,11 @@ export default function Product() {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         async function fetch_data() {
-            const data = await pb.collection("tables").getOne(id);
+            const data = await DatabaseService.getDocument(import.meta.env.VITE_TABLES_COLLECTION, id);
             setData(data);
             setImages(data.preview_images);
-            setSpecs(data.specs);
-            setFeatures(data.features)
+            setSpecs(JSON.parse(data.specs));
+            setFeatures(JSON.parse(data.features))
             setLoading(false);
         }
 
@@ -54,7 +56,7 @@ export default function Product() {
                         <div className="space-y-4">
                             <div className="overflow-hidden rounded-lg bg-gray-800/50 aspect-[4/3]">
                                 <img
-                                    src={pb.files.getURL(data, images[mainImage])}
+                                    src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, images[mainImage])}
                                     alt="Pool Table"
                                     className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
                                 />
@@ -68,7 +70,7 @@ export default function Product() {
                                               ${mainImage === idx ? 'ring-2 ring-blue-500' : ''}`}
                                     >
                                         <img
-                                            src={pb.files.getURL(data, img)}
+                                            src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, img)}
                                             alt={`View ${idx + 1}`}
                                             className="object-cover w-full h-full transition-all duration-300 hover:scale-110"
                                         />
@@ -85,11 +87,11 @@ export default function Product() {
                             </div>
 
                             <div className="space-y-4 text-gray-300">
-                                <p className="leading-relaxed">
+                                <p className="leading-relaxed capitalize">
                                     {data.description}
                                 </p>
 
-                                <div className="space-y-2">
+                                <div className="space-y-2 capitalize">
                                     {features.map((value, index) => (
                                         <div key={index} className="flex items-center gap-2">
                                             <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,7 +119,7 @@ export default function Product() {
                             <div className={`transition-all duration-500 overflow-hidden ${showSpec ? 'max-h-[500px]' : 'max-h-0'}`}>
                                 <div className="p-4 mt-4 space-y-3 border border-gray-700 rounded-lg bg-gray-800/50">
                                     {specs.map((spec, idx) => (
-                                        <div key={idx} className="flex justify-between text-sm">
+                                        <div key={idx} className="flex justify-between text-sm capitalize">
                                             <span className="text-gray-400">{spec.label}</span>
                                             <span className="text-white">{spec.value}</span>
                                         </div>
