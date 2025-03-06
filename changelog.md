@@ -5,7 +5,7 @@
 - ❌Adding pool game failed❌
 - Logo, thumbnails and icons all set up
 
-# V 0.7 (stable release)
+# V 0.7 (stable version)
 
 - Added an online pool game 🎮
 - all pages designed and synced
@@ -41,3 +41,9 @@
 # V 1.0.2
 
 - (Minor change) Added progress custom progress bar loading
+
+# V 2 (Stable version)
+
+- Migration from pocketbase to AppWrite
+- Introduced Ads (vertical & horizontal)
+- Improved performance

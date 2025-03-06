@@ -4,9 +4,7 @@ b# Great Moyi Billiards
 
 Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09a-e23b-4a2c-8747-1d024f55783b/deploy-status)](https://app.netlify.com/sites/essanyarugunga1/deploys)
 
-# (stable) Version 1.0.1
-
-> Latest: Progress Bar loaing
+# (stable) Version 2
 
 <br>
 <br>
@@ -58,3 +56,9 @@ Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09
 # V 1.0.2
 
 - (Minor change) Added progress custom progress bar loading
+
+# V 2 (Stable release)
+
+- Migration from pocketbase to AppWrite
+- Introduced Ads (vertical & horizontal)
+- Improved performance
