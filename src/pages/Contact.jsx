@@ -33,7 +33,7 @@ export default function Contact() {
     async function sendMessage(data) {
         setIsLoading(true)
         try {
-            await DatabaseService.createDocument(import.meta.env.VITE_SERVICES_COLLECTION, {
+            await DatabaseService.createDocument(import.meta.env.VITE_MESSAGES_COLLECTION, {
                 names: data.names,
                 email: data.email,
                 phone: data.phone,

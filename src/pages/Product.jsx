@@ -45,7 +45,7 @@ export default function Product() {
         <div className="min-h-screen bg-gray-900">
             <Navbar />
 
-            <div className="container px-4 py-8 mx-auto">
+            <div className="container w-[90%] px-4 py-8 mx-auto">
 
                 {loading ? <SimpleLoading /> : null}
 

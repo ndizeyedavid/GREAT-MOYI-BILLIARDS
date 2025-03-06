@@ -20,7 +20,7 @@ export default function Services() {
         async function fetch_data() {
             setLoading(true);
             const result = await DatabaseService.listDocuments(import.meta.env.VITE_TEAM_COLLECTION);
-            const information = await DatabaseService.getDocument(import.meta.env.VITE_ADS_COLLECTION, import.meta.env.VITE_SITE_DOCUMENT);
+            const information = await DatabaseService.getDocument(import.meta.env.VITE_ADS_COLLECTION, import.meta.env.VITE_AD_DOCUMENT);
 
             setTeams(result);
             setInform(information);

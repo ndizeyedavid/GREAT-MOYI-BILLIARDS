@@ -15,7 +15,6 @@ import CTA from "../components/CTA"
 import SideAdvertisment from "../components/SideAdvertisment";
 import pb from "../utils/pocketbase";
 import DatabaseService from "../services/databaseServices";
-import FileService from "../services/fileService";
 import { storage } from "../utils/appwrite";
 
 export default function Home() {
@@ -98,7 +97,7 @@ export default function Home() {
                 {ads.horizontal1 != null &&
                     <div className="flex justify-center w-full my-8">
                         <div className="w-full max-w-[728px] h-[90px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
-                            <img src={FileService.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal1)} className="object-cover w-full h-full" alt="Ads" />
+                            <img src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal1)} className="object-cover w-full h-full" alt="Ads" />
                         </div>
                     </div>
                 }
@@ -149,7 +148,7 @@ export default function Home() {
                     {ads.horizontal2 != null &&
                         <div className="flex justify-center w-full my-8">
                             <div className="w-full max-w-[970px] h-[250px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
-                                <img src={FileService.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal2)} className="object-cover w-full h-full" alt="Ads" />
+                                <img src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal2)} className="object-cover w-full h-full" alt="Ads" />
                             </div>
                         </div>
                     }
@@ -157,7 +156,7 @@ export default function Home() {
                     <div className="grid grid-rows-1 gap-5 md:grid-cols-3">
 
                         {data.map((value, index) => (
-                            <SingleCard key={index} id={value.id} img={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
+                            <SingleCard key={index} id={value?.$id} img={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, value.thumbnail)} title={value.title} desc={value.description} price={value.price} />
                         ))}
 
                     </div>
@@ -166,7 +165,7 @@ export default function Home() {
                     {ads.horizontal3 != null &&
                         <div className="flex justify-center w-full my-8">
                             <div className="w-full max-w-[728px] h-[90px] overflow-hidden bg-gray-800/50 rounded-md flex items-center justify-center">
-                                <img src={FileService.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal3)} className="object-cover w-full h-full" alt="Ads" />
+                                <img src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, ads.horizontal3)} className="object-cover w-full h-full" alt="Ads" />
                             </div>
                         </div>
                     }

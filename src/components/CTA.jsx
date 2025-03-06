@@ -9,7 +9,7 @@ export default function CTA() {
                 Ready to elevate your game room? We're here to help bring your vision to life.
             </p>
             <Link
-                href="/contact"
+                to="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#FFD700] text-gray-900 text-lg font-bold py-4 px-8 rounded-full hover:bg-yellow-400 transition duration-300"
