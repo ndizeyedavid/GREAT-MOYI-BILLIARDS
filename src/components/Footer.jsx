@@ -42,6 +42,7 @@ export default function Footer({ variant }) {
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Contact Details</Link></li>
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Confirm Order</Link></li>
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Social Media</Link></li>
+                            <li><Link to="https://dashboard-greatmoyi.netlify.app/" target="_blank" className="transition-all hover:text-white/80">Admin Login</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +51,7 @@ export default function Footer({ variant }) {
             </div>
             <hr className="border border-white/5" />
 
-            <p className=" p-5 text-center text-white/70">Copyright &copy; 2025 . A product of The Great Moyi Billiards &mdash; <span className="text-center pt-5 text-gray-200">All rights reserved</span> </p>
+            <p className="p-5 text-center  text-white/70">Copyright &copy; 2025 . A product of The Great Moyi Billiards &mdash; <span className="pt-5 text-center text-gray-200">All rights reserved</span> </p>
 
         </footer>
     )
