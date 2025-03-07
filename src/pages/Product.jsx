@@ -24,6 +24,9 @@ export default function Product() {
     useEffect(() => {
         async function fetch_data() {
             const data = await DatabaseService.getDocument(import.meta.env.VITE_TABLES_COLLECTION, id);
+
+            const addView = await DatabaseService.updateDocument(import.meta.env.VITE_TABLES_COLLECTION, data?.$id, { views: Number(data.views) + 1 });
+
             setData(data);
             setImages(data.preview_images);
             setSpecs(JSON.parse(data.specs));
