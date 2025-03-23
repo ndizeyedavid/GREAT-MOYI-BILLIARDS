@@ -6,11 +6,19 @@ import "nprogress/nprogress.css";
 export default function ProgressBar() {
   const location = useLocation();
 
+  NProgress.configure({ showSpinner: false });
+
   useEffect(() => {
-    NProgress.start(); // Start the progress bar
-    setTimeout(() => {
-      NProgress.done(); // Complete after a short delay
-    }, 500);
+    const handleStart = () => NProgress.start();
+    const handleStop = () => NProgress.done();
+
+    document.querySelectorAll("a").forEach((el) => el.addEventListener("click", handleStart)); // i wrote this line myself, not GPT ;)
+
+    handleStop();
+
+    return () => {
+      window.removeEventListener("click", handleStart);
+    };
   }, [location]);
 
   return null;
