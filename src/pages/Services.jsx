@@ -15,15 +15,18 @@ export default function Services() {
 
     const [teams, setTeams] = useState([]);
     const [inform, setInform] = useState([]);
+    const [siteInfo, setSiteInfo] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         async function fetch_data() {
             setLoading(true);
+            const site_info = await DatabaseService.listDocuments(import.meta.env.VITE_SITE_COLLECTION);
             const result = await DatabaseService.listDocuments(import.meta.env.VITE_TEAM_COLLECTION);
             const information = await DatabaseService.getDocument(import.meta.env.VITE_ADS_COLLECTION, import.meta.env.VITE_AD_DOCUMENT);
 
             setTeams(result);
             setInform(information);
+            setSiteInfo(site_info[0]);
             setLoading(false);
         }
 
@@ -61,7 +64,7 @@ export default function Services() {
                         <h4 className="text-[#FFD700] text-[36px] font-bold mb-6">Great Moyi</h4>
                         <p className="text-gray-300 text-[18px] leading-relaxed">
                             {loading && <SimpleLoading />}
-                            {inform.about}
+                            {siteInfo.about}
                         </p>
                     </motion.div>
 
@@ -72,7 +75,7 @@ export default function Services() {
                         <h4 className="text-[#FFD700] text-[36px] font-bold mb-6">Our Legacy</h4>
                         <p className="text-gray-300 text-[18px] leading-relaxed">
                             {loading && <SimpleLoading />}
-                            {inform.legacy}
+                            {siteInfo.legacy}
                         </p>
                     </motion.div>
                 </div>
@@ -104,7 +107,7 @@ export default function Services() {
                         whileHover={{ scale: 1.1 }}
                         className="p-6 text-center bg-gray-800/50 rounded-xl">
 
-                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.tables_sold}</h3>
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{siteInfo.tables_sold}</h3>
                         <p className="text-gray-300">Tables Sold</p>
 
                     </motion.div>
@@ -112,7 +115,7 @@ export default function Services() {
                         whileHover={{ scale: 1.1 }}
                         className="p-6 text-center bg-gray-800/50 rounded-xl">
 
-                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.happy_clients}</h3>
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{siteInfo.happy_clients}</h3>
                         <p className="text-gray-300">Happy Clients</p>
 
                     </motion.div>
@@ -120,7 +123,7 @@ export default function Services() {
                         whileHover={{ scale: 1.1 }}
                         className="p-6 text-center bg-gray-800/50 rounded-xl">
 
-                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.districts}</h3>
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{siteInfo.districts}</h3>
                         <p className="text-gray-300">Operating Districts</p>
 
                     </motion.div>
@@ -128,7 +131,7 @@ export default function Services() {
                         whileHover={{ scale: 1.1 }}
                         className="p-6 text-center bg-gray-800/50 rounded-xl">
 
-                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{inform.experience}</h3>
+                        <h3 className="text-[#FFD700] text-4xl font-bold mb-2">{siteInfo.experience}</h3>
                         <p className="text-gray-300">Years Experience</p>
 
                     </motion.div>
