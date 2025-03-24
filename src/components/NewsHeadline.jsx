@@ -4,14 +4,14 @@ function NewsHeadline({ id, thumbnail, title, description, authorName, date }) {
     return (
         <Link to={"/news/read/" + id} className="transition-all hover:-translate-y-3 flex flex-col overflow-hidden h-fit w-[90%] border border-white/10 rounded-lg gap-[32px]">
             {/* thumbnail */}
-            <img src={thumbnail} className="w-full h-[358px] object-cover" alt={title + " Thumbnail"} width={500} height={500} />
+            <img src={thumbnail} className="w-full h-[328px] object-cover" alt={title + " Thumbnail"} width={500} height={500} />
 
             {/* contents */}
-            <div className="px-[33px] flex flex-col gap-[31px] pb-[34px]">
+            <div className="md:px-[33px] px-[20px] flex flex-col gap-[31px] pb-[34px]">
                 {/* div-1 */}
                 <div className="flex flex-col gap-[12px]">
-                    <h3 className="text-[30px] font-semibold">{title}</h3>
-                    <p className="text-[16px] text-white/80 w-[70%]">{description}</p>
+                    <h3 className="md:text-[30px] text-[23px] font-semibold">{title}</h3>
+                    <p className="text-[16px] text-white/80 md:w-[70%]">{description}</p>
                 </div>
 
                 {/* div-2 */}

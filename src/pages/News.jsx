@@ -41,7 +41,7 @@ function News() {
                 <meta property="og:description" content="Stay updated with the latest billiards news, tournaments, and announcements from Great Moyi Billiards." />
             </Helmet>
             <Navbar />
-            <main className="w-[75%] mx-auto mt-[100px] flex flex-col gap-[96px] items-start justify-start">
+            <main className="md:w-[75%] px-4 mx-auto md:mt-[100px] mt-[40px] flex flex-col gap-[96px] items-start justify-start">
                 <header className="flex flex-col items-start justify-start gap-3 text-left">
                     <h1 className="text-white text-[42px] md:text-[52px] font-semibold leading-[71px]">News</h1>
                     <p className="text-white/55">We've got amazing announcements plus great sport news</p>
