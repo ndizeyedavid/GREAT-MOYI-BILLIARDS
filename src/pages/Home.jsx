@@ -62,13 +62,13 @@ export default function Home() {
 
                         <Slider {...carouselSettings}>
                             <div>
-                                <img src="/assets/pool2.webp" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                                <img src="/assets/pool2.webp" className="md:w-full md:h-[400px] object-cover rounded opacity-80" alt="Illustration 2" />
                             </div>
                             <div>
-                                <img src="/assets/pool3.png" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                                <img src="/assets/pool3.png" className="md:w-full md:h-[400px] object-cover rounded opacity-80" alt="Illustration 2" />
                             </div>
                             <div>
-                                <img src="/assets/pool1.jpg" className="md:w-full md:h-[400px] object-cover rounded opacity-80 blur-[2px]" alt="Illustration 2" />
+                                <img src="/assets/pool1.jpg" className="md:w-full md:h-[400px] object-cover rounded opacity-80" alt="Illustration 2" />
                             </div>
                             {/* Add more slides as needed */}
                         </Slider>
