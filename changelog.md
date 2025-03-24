@@ -47,3 +47,10 @@
 - Migration from pocketbase to AppWrite
 - Introduced Ads (vertical & horizontal)
 - Improved performance
+
+# V 2.1
+
+- Added News and announcements
+- Improved SEO for news articles
+- removed blur in slideshow images
+- preparing for real deployment(paid server)

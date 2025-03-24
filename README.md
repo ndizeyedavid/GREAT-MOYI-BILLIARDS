@@ -4,10 +4,8 @@ b# Great Moyi Billiards
 
 Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09a-e23b-4a2c-8747-1d024f55783b/deploy-status)](https://app.netlify.com/sites/essanyarugunga1/deploys)
 
-# (stable) Version 2
+# Version 2.1
 
-<br>
-<br>
 <br>
 <br>
 
@@ -20,7 +18,7 @@ Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09
 - ❌Adding pool game failed❌
 - Logo, thumbnails and icons all set up
 
-# V 0.7 (stable release)
+# V 0.7 (stable version)
 
 - Added an online pool game 🎮
 - all pages designed and synced
@@ -57,8 +55,15 @@ Wesbite Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/b467a09
 
 - (Minor change) Added progress custom progress bar loading
 
-# V 2 (Stable release)
+# V 2 (Stable version)
 
 - Migration from pocketbase to AppWrite
 - Introduced Ads (vertical & horizontal)
 - Improved performance
+
+# V 2.1
+
+- Added News and announcements
+- Improved SEO for news articles
+- removed blur in slideshow images
+- preparing for real deployment(paid server)
