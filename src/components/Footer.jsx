@@ -40,7 +40,7 @@ export default function Footer({ variant }) {
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Contact Details</Link></li>
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Write a Message</Link></li>
                             <li><Link to="/contact" className="transition-all hover:text-white/80">Map</Link></li>
-                            <li><Link to="https://great-moyi-dashboard-hj68rcr92-david-ndizeyes-projects.vercel.app/" target="_blank" className="transition-all hover:text-white/80">Admin Login</Link></li>
+                            <li><Link to="https://great-moyi-dashboard.vercel.app/" target="_blank" className="transition-all hover:text-white/80">Admin Login</Link></li>
                         </ul>
                     </div>
                 </div>
