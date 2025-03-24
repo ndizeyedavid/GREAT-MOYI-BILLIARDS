@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-function NewsHeadline({ thumbnail, title, description, authorName, authorImage, date }) {
+function NewsHeadline({ id, thumbnail, title, description, authorName, date }) {
     return (
-        <Link to={"/news/" + title.replaceAll(" ", "+").toLowerCase()} className="transition-all hover:-translate-y-3 flex flex-col overflow-hidden h-fit w-[90%] border border-white/10 rounded-lg gap-[32px]">
+        <Link to={"/news/read/" + id} className="transition-all hover:-translate-y-3 flex flex-col overflow-hidden h-fit w-[90%] border border-white/10 rounded-lg gap-[32px]">
             {/* thumbnail */}
             <img src={thumbnail} className="w-full h-[358px] object-cover" alt={title + " Thumbnail"} width={500} height={500} />
 
@@ -19,8 +19,8 @@ function NewsHeadline({ thumbnail, title, description, authorName, authorImage, 
                     {/* TODO: grid-col-2 */}
                     <div className="flex flex-col gap-2">
                         <h5 className="text-white/50">Written by</h5>
-                        <div className="flex items-center gap-4">
-                            <img src={authorImage} className="size-[28px] rounded-full object-cover" alt={authorName + " Author"} width={500} height={500} />
+                        <div className="flex items-center gap-2">
+                            <div className="size-[28px] rounded-full object-cover bg-gradient-to-br from-pink-500 to-yellow-500 animate-spin" />
                             <span>{authorName}</span>
                         </div>
                     </div>

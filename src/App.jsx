@@ -28,7 +28,7 @@ function App() {
             <Route path="/play" element={<PlayOnline />} />
             <Route path="/about" element={<Services />} />
             <Route path="/news" element={<News />} />
-            <Route path="/news/:title" element={<ReadNews />} />
+            <Route path="/news/read/:id" element={<ReadNews />} />
             {/* <Route path="/Order" element={<p>Order page</p>} /> */}
             <Route path="/contact" element={<Contact />} />
           </Routes>
