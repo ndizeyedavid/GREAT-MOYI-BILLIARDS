@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import { Helmet } from "react-helmet"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { useEffect, useState } from "react";
@@ -33,42 +34,62 @@ function ReadNews() {
 
     return (
         <>
+            {!loading && (
+                <Helmet>
+                    <title>{fetchedNews.title} - Great Moyi Billiards</title>
+                    <meta name="description" content={fetchedNews.description || fetchedNews.title} />
+                    <meta property="og:title" content={fetchedNews.title} />
+                    <meta property="og:description" content={fetchedNews.description || fetchedNews.title} />
+                    <meta property="og:image" content={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, fetchedNews.thumbnail)} />
+                </Helmet>
+            )}
             <Navbar />
 
-            <main className="w-[75%] mx-auto mt-[60px] flex flex-col gap-[46px] items-start  justify-start">
-
-                {loading ?
+            <article className="w-[75%] mx-auto mt-[60px] flex flex-col gap-[46px] items-start justify-start">
+                {loading ? (
                     <SimpleLoading />
-
-                    :
-
+                ) : (
                     <>
-                        <div className="flex flex-col gap-6">
-                            <h3 className="text-[30px] font-semibold">{fetchedNews.title}</h3>
+                        <header className="flex flex-col gap-6">
+                            <h1 className="text-[30px] font-semibold">{fetchedNews.title}</h1>
 
-                            {/* author */}
                             <div className="mx-7">
                                 <div className="flex items-center gap-4">
-                                    <div className="size-[58px] rounded-full object-cover bg-gradient-to-br from-pink-500 to-yellow-500 animate-spin" />
+                                    <div className="size-[58px] rounded-full object-cover bg-gradient-to-br from-pink-500 to-yellow-500" />
                                     <div className="flex flex-col gap-1 text-white/90">
-                                        <span>writtern by <span className="text-[#f14d3a] cursor-pointer hover:opacity-90">{fetchedNews.author}</span></span>
-                                        <span>{new Date(fetchedNews.$createdAt).toDateString()}</span>
+                                        <span>written by <span className="text-[#f14d3a] cursor-pointer hover:opacity-90">{fetchedNews.author}</span></span>
+                                        <time dateTime={fetchedNews.$createdAt}>{new Date(fetchedNews.$createdAt).toDateString()}</time>
                                     </div>
                                 </div>
                             </div>
+                        </header>
 
+                        <img
+                            src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, fetchedNews.thumbnail)}
+                            className="w-full h-[500px] rounded-md object-cover opacity-85 mb-7"
+                            alt={`${fetchedNews.title} thumbnail`}
+                            width={1200}
+                            height={500}
+                            loading="eager"
+                        />
 
-                        </div>
+                        <section className="prose space-y-7 prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: fetchedNews.story }} />
 
-
-                        {/* thumbnail */}
-                        <img src={storage.getFilePreview(import.meta.env.VITE_IMAGES_BUCKET, fetchedNews.thumbnail)} className="w-full h-[500px] rounded-md object-cover opacity-85 mb-7" alt="Thumbnail" width={500} height={300} />
-
-                        {/* news content */}
-                        <div className="space-y-7" dangerouslySetInnerHTML={{ __html: fetchedNews.story }} />
+                        <script type="application/ld+json">
+                            {JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "NewsArticle",
+                                "headline": fetchedNews.title,
+                                "datePublished": fetchedNews.$createdAt,
+                                "author": {
+                                    "@type": "Person",
+                                    "name": fetchedNews.author
+                                }
+                            })}
+                        </script>
                     </>
-                }
-            </main>
+                )}
+            </article>
 
             <div className='mt-[100px]'>
                 <Footer />

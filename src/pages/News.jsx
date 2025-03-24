@@ -6,6 +6,7 @@ import SimpleLoading from "../components/SimpleLoading"
 import Empty from "../components/Empty"
 import { useEffect, useState } from 'react'
 import { storage } from '../utils/appwrite'
+import { Helmet } from "react-helmet"
 
 function News() {
 
@@ -32,23 +33,23 @@ function News() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Latest Billiards News - Great Moyi Billiards</title>
+                <meta name="description" content="Stay updated with the latest billiards news, tournaments, and announcements from Great Moyi Billiards." />
+                <meta property="og:title" content="Latest Billiards News - Great Moyi Billiards" />
+                <meta property="og:description" content="Stay updated with the latest billiards news, tournaments, and announcements from Great Moyi Billiards." />
+            </Helmet>
             <Navbar />
-            <div className="w-[75%] mx-auto mt-[100px] flex flex-col gap-[96px] items-start  justify-start">
+            <main className="w-[75%] mx-auto mt-[100px] flex flex-col gap-[96px] items-start justify-start">
+                <header className="flex flex-col items-start justify-start gap-3 text-left">
+                    <h1 className="text-white text-[42px] md:text-[52px] font-semibold leading-[71px]">News</h1>
+                    <p className="text-white/55">We've got amazing announcements plus great sport news</p>
+                </header>
 
-                <div className="flex flex-col items-start justify-start gap-3 text-left ">
-                    <h3 className="text-white text-[42px] md:text-[52px] font-semibold leading-[71px]">News</h3>
-                    <p className="text-white/55">we've got amazing announcements plus great sport news</p>
-                </div>
-
-                {/* headlines */}
-                <div className='flex flex-col items-center gap-[64px]'>
-                    {loading ?
-                        null
-
-                        :
-
+                <section className='flex flex-col items-center gap-[64px]' aria-label="News articles">
+                    {loading ? null : (
                         <>
-
                             {fetchedNews.map((news) => (
                                 <NewsHeadline
                                     key={news.$id}
@@ -62,11 +63,9 @@ function News() {
                                 />
                             ))}
                         </>
-                    }
-
-                </div>
-
-            </div>
+                    )}
+                </section>
+            </main>
 
             {loading && <SimpleLoading />}
             {fetchedNews.length === 0 && <Empty title="No news available" text="There are no news articles or announcements yet. Create one using the 'New Story' button." />}

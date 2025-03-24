@@ -1,15 +1,38 @@
 # Robots.txt file for https://thegreatmoyibilliards.netlify.app
 
-# Allowed
+# Global rules
 User-agent: *
 Allow: /
+Allow: /news/
+Allow: /explore/
+Allow: /play/
+Allow: /about/
+Allow: /contact/
+Crawl-delay: 10
 
-# Blocked
+# Block administrative and private sections
 Disallow: /admin/
 Disallow: /login/
 Disallow: /register/
 Disallow: /settings/
 Disallow: /api/
+Disallow: /drafts/
+Disallow: /private/
+Disallow: /*?*
+
+# Block specific file types
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Allow Googlebot specific settings
+User-agent: Googlebot
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://thegreatmoyibilliards.netlify.app/sitemap.xml

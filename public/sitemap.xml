@@ -3,40 +3,48 @@
   <!-- Home Page -->
   <url>
     <loc>https://thegreatmoyibilliards.netlify.app/</loc>
-    <lastmod>2025-01-05</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- News List Page -->
+  <url>
+    <loc>https://thegreatmoyibilliards.netlify.app/news</loc>
+    <lastmod>2024-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Catalog Page -->
   <url>
     <loc>https://thegreatmoyibilliards.netlify.app/explore</loc>
-    <lastmod>2025-01-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2024-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- About Us Page -->
+  <!-- Play Page -->
   <url>
     <loc>https://thegreatmoyibilliards.netlify.app/play</loc>
-    <lastmod>2025-01-05</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Pricing Page -->
+  <!-- About Page -->
   <url>
     <loc>https://thegreatmoyibilliards.netlify.app/about</loc>
-    <lastmod>2025-01-05</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Contact Page -->
   <url>
     <loc>https://thegreatmoyibilliards.netlify.app/contact</loc>
-    <lastmod>2025-01-05</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2024-01-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>
